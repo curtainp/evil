@@ -830,7 +830,7 @@ CORNER defaults to `upper-left'."
 (evil-define-state operator
   "Operator-Pending state."
   :tag " <O> "
-  :cursor evil-half-cursor
+  :cursor hbar
   :enable (evil-operator-shortcut-map operator motion normal))
 
 (evil-define-keymap evil-operator-shortcut-map
@@ -838,15 +838,6 @@ CORNER defaults to `upper-left'."
   :local t
   (setq evil-operator-shortcut-map (make-sparse-keymap))
   (evil-initialize-local-keymaps))
-
-;; the half-height "Operator-Pending cursor" cannot be specified
-;; as a static `cursor-type' value, since its height depends on
-;; the current font size
-(defun evil-half-cursor ()
-  "Change cursor to a half-height box.
-\(This is really just a thick horizontal bar.)"
-  (let ((height (/ (window-pixel-height) (* (window-height) 2))))
-    (setq cursor-type (cons 'hbar height))))
 
 ;;; Replace state
 
